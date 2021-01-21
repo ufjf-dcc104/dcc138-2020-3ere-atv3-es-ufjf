@@ -16,18 +16,43 @@
 
         skelly.addEventListener("load", terminouDeCarregar);
 
-        context.fillStyle = "coral";
-        context.fillRect(0,0, canvas.width, canvas.height);
+        function desenhaFundo()
+        {
+            context.fillStyle = "coral";
+            context.fillRect(0,0, canvas.width, canvas.height);
+        }
+
         let linha = 2;
         let coluna = 1;
 
         function terminouDeCarregar()
         {
+            
+        }
+
+        let t0;
+        let deltaTime;
+
+        requestAnimationFrame(passo);
+        function passo(t)
+        {
+            t0 = t0 ?? t;
+            deltaTime = (t - t0)/1000;
+            desenhaFundo();
+
+            coluna = coluna + 9*deltaTime;
+            if (coluna > 6) {
+                coluna = 0;
+            }
+
             context.drawImage(skelly,
             //origem (x, y, w, h)
-            coluna*64, linha*64, 64, 64,
+            Math.floor(coluna)*64, linha*64, 64, 64,
             //destino (x, y, w, h)
             0, 0, 64, 64);
+
+            requestAnimationFrame(passo);
+            t0 = t;
         }
     </script>
 </body>
