@@ -25,6 +25,12 @@
         let linha = 2;
         let coluna = 1;
 
+        let pose = 0;
+        let quadro = 0;
+        const POSES = [
+            7, 7, 7, 7, 8, 8, 8, 8, 9, 9, 9, 9, 6, 6, 6, 6, 13, 13, 13, 13, 6
+        ]
+
         function terminouDeCarregar()
         {
             
@@ -40,14 +46,12 @@
             deltaTime = (t - t0)/1000;
             desenhaFundo();
 
-            coluna = coluna + 9*deltaTime;
-            if (coluna > 6) {
-                coluna = 0;
-            }
+            quadro = (quadro >= POSES[pose] - 1) ? 0 : quadro + 9 * deltaTime; 
+            
 
             context.drawImage(skelly,
             //origem (x, y, w, h)
-            Math.floor(coluna)*64, linha*64, 64, 64,
+            Math.floor(quadro)*64, pose*64, 64, 64,
             //destino (x, y, w, h)
             0, 0, 64, 64);
 
