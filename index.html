@@ -8,13 +8,21 @@
 <body>
     <h1>Exemplo 02</h1>
     <canvas></canvas>
-    <img src="assets/skeleton.png" />
     <script>
         const canvas = document.querySelector("canvas");
         const context = canvas.getContext("2d");
+        const skelly = new Image();
+        skelly.src = "assets/skeleton.png";
+
+        skelly.addEventListener("load", terminouDeCarregar);
 
         context.fillStyle = "coral";
         context.fillRect(0,0, canvas.width, canvas.height);
+
+        function terminouDeCarregar()
+        {
+            context.drawImage(skelly, 0, 0);
+        }
     </script>
 </body>
 </html>
