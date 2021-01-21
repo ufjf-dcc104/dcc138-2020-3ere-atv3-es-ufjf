@@ -12,16 +12,22 @@
         const canvas = document.querySelector("canvas");
         const context = canvas.getContext("2d");
         const skelly = new Image();
-        skelly.src = "assets/skeleton.png";
+        skelly.src = "assets/skelly.png";
 
         skelly.addEventListener("load", terminouDeCarregar);
 
         context.fillStyle = "coral";
         context.fillRect(0,0, canvas.width, canvas.height);
+        let linha = 2;
+        let coluna = 1;
 
         function terminouDeCarregar()
         {
-            context.drawImage(skelly, 0, 0);
+            context.drawImage(skelly,
+            //origem (x, y, w, h)
+            coluna*64, linha*64, 64, 64,
+            //destino (x, y, w, h)
+            0, 0, 64, 64);
         }
     </script>
 </body>
