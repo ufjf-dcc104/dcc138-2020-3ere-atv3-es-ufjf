@@ -8,6 +8,13 @@
 <body>
     <h1>Exemplo 02</h1>
     <canvas></canvas>
-    <script></script>
+    <img src="assets/skeleton.png" />
+    <script>
+        const canvas = document.querySelector("canvas");
+        const context = canvas.getContext("2d");
+
+        context.fillStyle = "coral";
+        context.fillRect(0,0, canvas.width, canvas.height);
+    </script>
 </body>
 </html>
