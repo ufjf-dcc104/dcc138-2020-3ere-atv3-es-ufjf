@@ -11,10 +11,10 @@
     <script>
         const canvas = document.querySelector("canvas");
         const context = canvas.getContext("2d");
-        const skelly = new Image();
-        skelly.src = "assets/skelly.png";
+        const sonic = new Image();
+        sonic.src = "assets/sonic.png";
 
-        skelly.addEventListener("load", terminouDeCarregar);
+        sonic.addEventListener("load", terminouDeCarregar);
 
         function desenhaFundo()
         {
@@ -28,12 +28,12 @@
         let pose = 0;
         let quadro = 0;
         const POSES = [
-           {quadroMax: 7, pv: 9},
-           {quadroMax: 7, pv: 9},
-           {quadroMax: 7, pv: 9},
-           {quadroMax: 7, pv: 9},
-           {quadroMax: 8, pv: 9},
-           {quadroMax: 8, pv: 9},
+           {quadroMax: 15, pv: 9},
+           {quadroMax: 15, pv: 9},
+           {quadroMax: 6, pv: 9},
+           {quadroMax: 6, pv: 9},
+           {quadroMax: 11, pv: 9},
+           {quadroMax: 11, pv: 9}/*,
            {quadroMax: 8, pv: 9},
            {quadroMax: 8, pv: 9},
            {quadroMax: 9, pv: 9},
@@ -48,7 +48,7 @@
            {quadroMax: 13, pv: 9},
            {quadroMax: 13, pv: 9},
            {quadroMax: 13, pv: 9},
-           {quadroMax: 6, pv: 9}
+           {quadroMax: 6, pv: 9}*/
         ]
 
         function terminouDeCarregar()
@@ -69,11 +69,11 @@
             quadro = (quadro >= POSES[pose].quadroMax - 1) ? 0 : quadro + POSES[pose].pv * deltaTime; 
             
 
-            context.drawImage(skelly,
+            context.drawImage(sonic,
             //origem (x, y, w, h)
-            Math.floor(quadro)*64, pose*64, 64, 64,
+            Math.floor(quadro)*24, pose*32, 24, 32,
             //destino (x, y, w, h)
-            0, 0, 64, 64);
+            0, 0, 24, 32);
 
             requestAnimationFrame(passo);
             t0 = t;
